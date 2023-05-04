@@ -39,6 +39,14 @@ public class Cart {
             }
         }
     }
+    public void addDigitalVideoDisc(DigitalVideoDisc dvd1,DigitalVideoDisc dvd2) {
+        if (qtyOrdered < MAX_NUMBERS_ORDERED) {
+            itemsOrdered[qtyOrdered++] = dvd1;
+            System.out.println("The disc " + dvd1.getTitle() + " has been added.");
+        } else {
+            System.out.println("The cart is almost full.");
+        }
+    }
     public void removeDigitalVideoDisc(DigitalVideoDisc disc) {
         for (int i = 0; i < qtyOrdered; i++) {
             if (itemsOrdered[i] == disc) {
@@ -60,4 +68,51 @@ public class Cart {
         }
         return total;
     }
+
+    public void printCart() {
+        System.out.println("***********************CART***********************");
+        System.out.println("Ordered Items:");
+        float totalCost = 0;
+        for (int i = 0; i < qtyOrdered; i++) {
+            DigitalVideoDisc disc = itemsOrdered[i];
+            System.out.printf("%d. DVD - %s: %s - %s - %d min: %.2f $\n",
+                    disc.getId(), disc.getTitle(), disc.getCategory(),
+                    disc.getDirector(), disc.getLength(), disc.getCost());
+            totalCost += disc.getCost();
+        }
+        System.out.printf("Total cost: %.2f $\n", totalCost);
+        System.out.println("***************************************************");
+    }
+
+    public void searchById(int id) {
+        for (int i = 0; i < qtyOrdered; i++) {
+            DigitalVideoDisc disc = itemsOrdered[i];
+            if (disc.getId() == id) {
+                System.out.println(itemsOrdered[i].toString());
+                return;
+            }
+        }
+        System.out.println("No DVD was found with the specified ID.");
+    }
+
+    public void searchByTitle(String title) {
+        boolean found = false;
+        for (int i = 0; i < qtyOrdered; i++) {
+//            DigitalVideoDisc disc = itemsOrdered[i];
+//            if (disc.getTitle().equalsIgnoreCase(title)) {
+//                System.out.printf("Found DVD: %d. %s - %s - %s - %d min: %.2f $\n",
+//                        disc.getId(), disc.getTitle(), disc.getCategory(),
+//                        disc.getDirector(), disc.getLength(), disc.getCost());
+//                found = true;
+//            }
+            if (itemsOrdered[i].getTitle().toLowerCase().contains(title.toLowerCase())) {
+                System.out.println(itemsOrdered[i].toString());
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("No DVD was found with the specified title.");
+        }
+    }
+
 }
