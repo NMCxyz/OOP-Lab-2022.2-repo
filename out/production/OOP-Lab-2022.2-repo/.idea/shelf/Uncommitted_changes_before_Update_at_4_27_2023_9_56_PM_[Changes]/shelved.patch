@@ -1,0 +1,526 @@
+Index: Lab 01/HelloWorld.java
+===================================================================
+diff --git a/Lab 01/HelloWorld.java b/Lab 01/HelloWorld.java
+deleted file mode 100644
+--- a/Lab 01/HelloWorld.java	(revision 0a7d8315c6d73c5c8fa69d9a48133f58ed2336a5)
++++ /dev/null	(revision 0a7d8315c6d73c5c8fa69d9a48133f58ed2336a5)
+@@ -1,9 +0,0 @@
+-//Example 1: HelloWorld.java
+-//Text-printing program
+-public class HelloWorld {
+-	public static void main(String args[]){
+-		System.out.println("Xin chao \n cac ban!");
+-		System.out.println("Hello \t World!");
+-	}// end of method main
+-
+-}
+\ No newline at end of file
+Index: Lab 01/LinearTwoVariables.java
+===================================================================
+diff --git a/Lab 01/LinearTwoVariables.java b/Lab 01/LinearTwoVariables.java
+deleted file mode 100644
+--- a/Lab 01/LinearTwoVariables.java	(revision 0a7d8315c6d73c5c8fa69d9a48133f58ed2336a5)
++++ /dev/null	(revision 0a7d8315c6d73c5c8fa69d9a48133f58ed2336a5)
+@@ -1,26 +0,0 @@
+-import javax.swing.JOptionPane;
+-
+-public class LinearTwoVariables {
+-
+-    public static void main(String[] args) {
+-
+-        String equation1 = JOptionPane.showInputDialog("Enter equation 1 in the form ax + by = c:");
+-        String equation2 = JOptionPane.showInputDialog("Enter equation 2 in the form ax + by = c:");
+-
+-        // Parse coefficients and constants from input strings
+-        double a1 = Double.parseDouble(equation1.substring(0, equation1.indexOf("x")).trim());
+-        double b1 = Double.parseDouble(equation1.substring(equation1.indexOf("x") + 1, equation1.indexOf("y")).trim());
+-        double c1 = Double.parseDouble(equation1.substring(equation1.indexOf("=") + 1).trim());
+-
+-        double a2 = Double.parseDouble(equation2.substring(0, equation2.indexOf("x")).trim());
+-        double b2 = Double.parseDouble(equation2.substring(equation2.indexOf("x") + 1, equation2.indexOf("y")).trim());
+-        double c2 = Double.parseDouble(equation2.substring(equation2.indexOf("=") + 1).trim());
+-
+-        // Solve for x and y
+-        double x = (c1*b2 - c2*b1) / (a1*b2 - a2*b1);
+-        double y = (a1*c2 - a2*c1) / (a1*b2 - a2*b1);
+-
+-        // Display solution
+-        JOptionPane.showMessageDialog(null, "Solution: x = " + x + ", y = " + y);
+-    }
+-}
+Index: Lab 01/ShowTwoNumbers.java
+===================================================================
+diff --git a/Lab 01/ShowTwoNumbers.java b/Lab 01/ShowTwoNumbers.java
+deleted file mode 100644
+--- a/Lab 01/ShowTwoNumbers.java	(revision 0a7d8315c6d73c5c8fa69d9a48133f58ed2336a5)
++++ /dev/null	(revision 0a7d8315c6d73c5c8fa69d9a48133f58ed2336a5)
+@@ -1,17 +0,0 @@
+-import javax.swing.JOptionPane;
+-
+-public class ShowTwoNumbers {
+-    public static void main(String[] args){
+-        String strNum1, strNum2;
+-        String strNotification = "You've just entered: ";
+-
+-        strNum1 = JOptionPane.showInputDialog(null, "Please input the first number: ","Input the first number", JOptionPane.INFORMATION_MESSAGE);
+-        strNotification += strNum1 + " and ";
+-
+-        strNum2 = JOptionPane.showInputDialog(null, "Please input the second number: ","Input the second number", JOptionPane.INFORMATION_MESSAGE);
+-        strNotification += strNum2 ;
+-
+-        JOptionPane.showMessageDialog(null, strNotification, "Show two numbers", JOptionPane.INFORMATION_MESSAGE);
+-        System.exit(0);
+-    }
+-}
+Index: Lab 01/SecondDegreeEquationSolver.java
+===================================================================
+diff --git a/Lab 01/SecondDegreeEquationSolver.java b/Lab 01/SecondDegreeEquationSolver.java
+deleted file mode 100644
+--- a/Lab 01/SecondDegreeEquationSolver.java	(revision 0a7d8315c6d73c5c8fa69d9a48133f58ed2336a5)
++++ /dev/null	(revision 0a7d8315c6d73c5c8fa69d9a48133f58ed2336a5)
+@@ -1,30 +0,0 @@
+-import javax.swing.JOptionPane;
+-
+-public class SecondDegreeEquationSolver {
+-    public static void main(String[] args) {
+-        // Get input values from user using JOptionPane
+-        String aString = JOptionPane.showInputDialog("Enter the coefficient of x^2:");
+-        String bString = JOptionPane.showInputDialog("Enter the coefficient of x:");
+-        String cString = JOptionPane.showInputDialog("Enter the constant:");
+-
+-        // Convert input strings to double values
+-        double a = Double.parseDouble(aString);
+-        double b = Double.parseDouble(bString);
+-        double c = Double.parseDouble(cString);
+-
+-        // Calculate the discriminant
+-        double discriminant = b * b - 4 * a * c;
+-
+-        // Check if the discriminant is negative
+-        if (discriminant < 0) {
+-            JOptionPane.showMessageDialog(null, "The equation has no real roots.");
+-        } else {
+-            // Calculate the two roots
+-            double root1 = (-b + Math.sqrt(discriminant)) / (2 * a);
+-            double root2 = (-b - Math.sqrt(discriminant)) / (2 * a);
+-
+-            // Display the roots using JOptionPane
+-            JOptionPane.showMessageDialog(null, "The roots are " + root1 + " and " + root2);
+-        }
+-    }
+-}
+Index: Lab 01/ArraySorting.java
+===================================================================
+diff --git a/Lab 01/ArraySorting.java b/Lab 01/ArraySorting.java
+deleted file mode 100644
+--- a/Lab 01/ArraySorting.java	(revision 0a7d8315c6d73c5c8fa69d9a48133f58ed2336a5)
++++ /dev/null	(revision 0a7d8315c6d73c5c8fa69d9a48133f58ed2336a5)
+@@ -1,20 +0,0 @@
+-import javax.swing.JOptionPane;
+-import java.util.Arrays;
+-
+-public class ArraySorting {
+-    public static void main(String[] args) {
+-        int size = Integer.parseInt(JOptionPane.showInputDialog("Enter the size of the array:"));
+-        int[] my_array = new int[size];
+-
+-        for (int i = 0; i < size; i++) {
+-            my_array[i] = Integer.parseInt(JOptionPane.showInputDialog("Enter element " + (i+1) + ":"));
+-        }
+-        Arrays.sort(my_array);
+-        int sum = 0;
+-        for (int i = 0; i < size; i++) {
+-            sum += my_array[i];
+-        }
+-        double avg = (double) sum / size;
+-        JOptionPane.showMessageDialog(null, "Sorted Array: " + Arrays.toString(my_array) + "\nSum: " + sum + "\nAverage: " + String.format("%.2f", avg));
+-    }
+-}
+Index: Lab 01/FirstDialog.java
+===================================================================
+diff --git a/Lab 01/FirstDialog.java b/Lab 01/FirstDialog.java
+deleted file mode 100644
+--- a/Lab 01/FirstDialog.java	(revision 0a7d8315c6d73c5c8fa69d9a48133f58ed2336a5)
++++ /dev/null	(revision 0a7d8315c6d73c5c8fa69d9a48133f58ed2336a5)
+@@ -1,8 +0,0 @@
+-import javax.swing.JOptionPane;
+-
+-public class FirstDialog {
+-    public static void main(String[] args){
+-        JOptionPane.showMessageDialog(null, "Hello World! How are you?");
+-        System.exit(0);
+-    }
+-}
+Index: Lab01/FirstDialog.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Lab01/FirstDialog.java b/Lab01/FirstDialog.java
+new file mode 100644
+--- /dev/null	(date 1682607076458)
++++ b/Lab01/FirstDialog.java	(date 1682607076458)
+@@ -0,0 +1,10 @@
++package Lab01;
++
++import javax.swing.JOptionPane;
++
++public class FirstDialog {
++    public static void main(String[] args){
++        JOptionPane.showMessageDialog(null, "Hello World! How are you?");
++        System.exit(0);
++    }
++}
+Index: Lab01/InputFromKeyBoard.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Lab01/InputFromKeyBoard.java b/Lab01/InputFromKeyBoard.java
+new file mode 100644
+--- /dev/null	(date 1682607156359)
++++ b/Lab01/InputFromKeyBoard.java	(date 1682607156359)
+@@ -0,0 +1,17 @@
++package Lab01;
++
++import java.util.Scanner;
++
++public class InputFromKeyBoard {
++    public static void main(String[] args) {
++        Scanner keyboard = new Scanner(System.in);
++
++        System.out.println("What's your name?");
++        String strName = keyboard.nextline();
++        System.out.println("How old are you?");
++        int iAge = keyboard.nextInt();
++        double dHeight = keyboard.nextDouble();
++
++        System.out.println("Mrs/MS. "+strName+", "+iAge+" years old. "+ "Your height is "+dHeight+".");
++    }
++}
+Index: Lab01/HelloWorld.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Lab01/HelloWorld.java b/Lab01/HelloWorld.java
+new file mode 100644
+--- /dev/null	(date 1682607097765)
++++ b/Lab01/HelloWorld.java	(date 1682607097765)
+@@ -0,0 +1,12 @@
++package Lab01;
++
++//Example 1: HelloWorld.java
++//Text-printing program
++
++public class HelloWorld {
++    public static void main(String args[]){
++        System.out.println("Xin chao \n cac ban!");
++        System.out.println("Hello \t World!");
++    }// end of method main
++
++}
+\ No newline at end of file
+Index: Lab01/ChoosingOption.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Lab01/ChoosingOption.java b/Lab01/ChoosingOption.java
+new file mode 100644
+--- /dev/null	(date 1682607024972)
++++ b/Lab01/ChoosingOption.java	(date 1682607024972)
+@@ -0,0 +1,12 @@
++package Lab01;
++
++import javax.swing.JOptionPane;
++public class ChoosingOption{
++    public static void main(String[] args){
++        int option = JOptionPane.showConfirmDialog(null, "Do you want too change to the first class ticket?");
++
++        JOptionPane.showMessageDialog(null, "You've chosen: "+ (option==JOptionPane.YES_OPTION?"Yes":"No"));
++        System.exit(0);
++
++    }
++}
+\ No newline at end of file
+Index: Lab01/DayOfMonth.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Lab01/DayOfMonth.java b/Lab01/DayOfMonth.java
+new file mode 100644
+--- /dev/null	(date 1682607051294)
++++ b/Lab01/DayOfMonth.java	(date 1682607051294)
+@@ -0,0 +1,46 @@
++package Lab01;
++
++import java.util.Scanner;
++
++public class DayOfMonth {
++    public static void main(String[] args) {
++        Scanner sc = new Scanner(System.in);
++        int month, year;
++        System.out.print("Enter the month (1-12): ");
++        month = sc.nextInt();
++        System.out.print("Enter the year: ");
++        year = sc.nextInt();
++        int numDays = 0;
++        switch (month) {
++            case 1:
++            case 3:
++            case 5:
++            case 7:
++            case 8:
++            case 10:
++            case 12:
++                numDays = 31;
++                break;
++            case 4:
++            case 6:
++            case 9:
++            case 11:
++                numDays = 30;
++                break;
++            case 2:
++                if (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0))
++                    numDays = 29;
++                else
++                    numDays = 28;
++                break;
++            default:
++                System.out.println("Invalid month.");
++                break;
++        }
++
++        // Output the result
++        if (numDays != 0) {
++            System.out.println("The number of days in month " + month + " of year " + year + " is " + numDays + ".");
++        }
++    }
++}
+Index: Lab01/ArraySorting.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Lab01/ArraySorting.java b/Lab01/ArraySorting.java
+new file mode 100644
+--- /dev/null	(date 1682607024959)
++++ b/Lab01/ArraySorting.java	(date 1682607024959)
+@@ -0,0 +1,22 @@
++package Lab01;
++
++import javax.swing.JOptionPane;
++import java.util.Arrays;
++
++public class ArraySorting {
++    public static void main(String[] args) {
++        int size = Integer.parseInt(JOptionPane.showInputDialog("Enter the size of the array:"));
++        int[] my_array = new int[size];
++
++        for (int i = 0; i < size; i++) {
++            my_array[i] = Integer.parseInt(JOptionPane.showInputDialog("Enter element " + (i+1) + ":"));
++        }
++        Arrays.sort(my_array);
++        int sum = 0;
++        for (int i = 0; i < size; i++) {
++            sum += my_array[i];
++        }
++        double avg = (double) sum / size;
++        JOptionPane.showMessageDialog(null, "Sorted Array: " + Arrays.toString(my_array) + "\nSum: " + sum + "\nAverage: " + String.format("%.2f", avg));
++    }
++}
+Index: .idea/OOP-Lab-2022.2-repo.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<module type=\"JAVA_MODULE\" version=\"4\">\r\n  <component name=\"NewModuleRootManager\" inherit-compiler-output=\"true\">\r\n    <exclude-output />\r\n    <content url=\"file://$MODULE_DIR$\" />\r\n    <orderEntry type=\"inheritedJdk\" />\r\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\r\n  </component>\r\n</module>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/OOP-Lab-2022.2-repo.iml b/.idea/OOP-Lab-2022.2-repo.iml
+--- a/.idea/OOP-Lab-2022.2-repo.iml	(revision 0a7d8315c6d73c5c8fa69d9a48133f58ed2336a5)
++++ b/.idea/OOP-Lab-2022.2-repo.iml	(date 1682606897630)
+@@ -2,7 +2,9 @@
+ <module type="JAVA_MODULE" version="4">
+   <component name="NewModuleRootManager" inherit-compiler-output="true">
+     <exclude-output />
+-    <content url="file://$MODULE_DIR$" />
++    <content url="file://$MODULE_DIR$">
++      <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
++    </content>
+     <orderEntry type="inheritedJdk" />
+     <orderEntry type="sourceFolder" forTests="false" />
+   </component>
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ProjectRootManager\">\r\n    <output url=\"file://$PROJECT_DIR$/out\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 0a7d8315c6d73c5c8fa69d9a48133f58ed2336a5)
++++ b/.idea/misc.xml	(date 1682606662967)
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+-  <component name="ProjectRootManager">
++  <component name="ProjectRootManager" version="2" project-jdk-name="11" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/out" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: Lab01/ShowTwoNumbers.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Lab01/ShowTwoNumbers.java b/Lab01/ShowTwoNumbers.java
+new file mode 100644
+--- /dev/null	(date 1682607184351)
++++ b/Lab01/ShowTwoNumbers.java	(date 1682607184351)
+@@ -0,0 +1,19 @@
++package Lab01;
++
++import javax.swing.JOptionPane;
++
++public class ShowTwoNumbers {
++    public static void main(String[] args){
++        String strNum1, strNum2;
++        String strNotification = "You've just entered: ";
++
++        strNum1 = JOptionPane.showInputDialog(null, "Please input the first number: ","Input the first number", JOptionPane.INFORMATION_MESSAGE);
++        strNotification += strNum1 + " and ";
++
++        strNum2 = JOptionPane.showInputDialog(null, "Please input the second number: ","Input the second number", JOptionPane.INFORMATION_MESSAGE);
++        strNotification += strNum2 ;
++
++        JOptionPane.showMessageDialog(null, strNotification, "Show two numbers", JOptionPane.INFORMATION_MESSAGE);
++        System.exit(0);
++    }
++}
+Index: Lab01/starTriangle.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Lab01/starTriangle.java b/Lab01/starTriangle.java
+new file mode 100644
+--- /dev/null	(date 1682607198728)
++++ b/Lab01/starTriangle.java	(date 1682607198728)
+@@ -0,0 +1,20 @@
++package Lab01;
++
++import java.util.Scanner;
++
++public class starTriangle {
++    public static void main(String[] args) {
++        Scanner sc = new Scanner(System.in);
++        int n;
++
++        System.out.print("Enter the height of the triangle: ");
++        n = sc.nextInt();
++
++        for (int i = 1; i <= n; i++) {
++            for (int j = 1; j <= i; j++) {
++                System.out.print("*");
++            }
++            System.out.println();
++        }
++    }
++}
+Index: Lab01/LinearTwoVariables.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Lab01/LinearTwoVariables.java b/Lab01/LinearTwoVariables.java
+new file mode 100644
+--- /dev/null	(date 1682607156371)
++++ b/Lab01/LinearTwoVariables.java	(date 1682607156371)
+@@ -0,0 +1,28 @@
++package Lab01;
++
++import javax.swing.JOptionPane;
++
++public class LinearTwoVariables {
++
++    public static void main(String[] args) {
++
++        String equation1 = JOptionPane.showInputDialog("Enter equation 1 in the form ax + by = c:");
++        String equation2 = JOptionPane.showInputDialog("Enter equation 2 in the form ax + by = c:");
++
++        // Parse coefficients and constants from input strings
++        double a1 = Double.parseDouble(equation1.substring(0, equation1.indexOf("x")).trim());
++        double b1 = Double.parseDouble(equation1.substring(equation1.indexOf("x") + 1, equation1.indexOf("y")).trim());
++        double c1 = Double.parseDouble(equation1.substring(equation1.indexOf("=") + 1).trim());
++
++        double a2 = Double.parseDouble(equation2.substring(0, equation2.indexOf("x")).trim());
++        double b2 = Double.parseDouble(equation2.substring(equation2.indexOf("x") + 1, equation2.indexOf("y")).trim());
++        double c2 = Double.parseDouble(equation2.substring(equation2.indexOf("=") + 1).trim());
++
++        // Solve for x and y
++        double x = (c1*b2 - c2*b1) / (a1*b2 - a2*b1);
++        double y = (a1*c2 - a2*c1) / (a1*b2 - a2*b1);
++
++        // Display solution
++        JOptionPane.showMessageDialog(null, "Solution: x = " + x + ", y = " + y);
++    }
++}
+Index: Lab01/MatrixAdd.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Lab01/MatrixAdd.java b/Lab01/MatrixAdd.java
+new file mode 100644
+--- /dev/null	(date 1682606897546)
++++ b/Lab01/MatrixAdd.java	(date 1682606897546)
+@@ -0,0 +1,45 @@
++package Lab01;
++
++import javax.swing.JOptionPane;
++public class MatrixAdd {
++    public static void main(String[] args) {
++        int rows, cols;
++
++        String rowsInput = JOptionPane.showInputDialog("Enter the number of rows:");
++        rows = Integer.parseInt(rowsInput);
++
++        String colsInput = JOptionPane.showInputDialog("Enter the number of columns:");
++        cols = Integer.parseInt(colsInput);
++        int[][] matrix1 = new int[rows][cols];
++        JOptionPane.showMessageDialog(null, "Enter the values for the first matrix:");
++        for (int i = 0; i < rows; i++) {
++            for (int j = 0; j < cols; j++) {
++                String input = JOptionPane.showInputDialog("Enter the value for row " + (i+1) + " and column " + (j+1) + ":");
++                matrix1[i][j] = Integer.parseInt(input);
++            }
++        }
++        int[][] matrix2 = new int[rows][cols];
++        JOptionPane.showMessageDialog(null, "Enter the values for the second matrix:");
++        for (int i = 0; i < rows; i++) {
++            for (int j = 0; j < cols; j++) {
++                String input = JOptionPane.showInputDialog("Enter the value for row " + (i+1) + " and column " + (j+1) + ":");
++                matrix2[i][j] = Integer.parseInt(input);
++            }
++        }
++        int[][] resultMatrix = new int[rows][cols];
++        for (int i = 0; i < rows; i++) {
++            for (int j = 0; j < cols; j++) {
++                resultMatrix[i][j] = matrix1[i][j] + matrix2[i][j];
++            }
++        }
++        String resultString = "The result matrix is:\n";
++        for (int i = 0; i < rows; i++) {
++            for (int j = 0; j < cols; j++) {
++                resultString += resultMatrix[i][j] + " ";
++            }
++            resultString += "\n";
++        }
++        JOptionPane.showMessageDialog(null, resultString);
++    }
++}
++
