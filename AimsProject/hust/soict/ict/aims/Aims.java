@@ -132,8 +132,7 @@ public class Aims {
                             case 1:
                                 System.out.println("1. See a media’s details");
                                 System.out.println("Please enter the name of the media that you want to view: ");
-                                Scanner scanner1 = new Scanner(System.in);
-                                String name1 = scanner1.nextLine();
+                                String name1 = scanner.nextLine();
                                 if (store.searchByTitleToDo(name1) != -1){
                                     int index = store.searchByTitleToDo(name1);
                                     System.out.println("Found :");
@@ -163,8 +162,7 @@ public class Aims {
                             case 2:
                                 System.out.println("2. Add a media to cart");
                                 System.out.println("Please enter the name of the media that you want to add: ");
-                                Scanner scanner2 = new Scanner(System.in);
-                                String name2 = scanner2.nextLine();
+                                String name2 = scanner.nextLine();
                                 cart.addMedia(dvdlist[store.searchByTitleToDo(name2)]);
 //                                if (cart.searchTitleToDo(name2) != -1){
 //                                    cart.searchByTitle(name2);
@@ -175,8 +173,7 @@ public class Aims {
                             case 3:
                                 System.out.println("3. Play a media");
                                 System.out.println("Please enter the name of the media that you want to play: ");
-                                Scanner scanner3 = new Scanner(System.in);
-                                String name3 = scanner3.nextLine();
+                                String name3 = scanner.nextLine();
                                 if (store.searchByTitleToDo(name3) != -1){
                                     dvdlist[store.searchByTitleToDo(name3)].play();
                                 }else{
@@ -202,21 +199,58 @@ public class Aims {
                     break;
                 case 3:
                     System.out.println("3. See current cart");
+                    cart.printCart();
                     do {
                         cartMenu();
                         choice = scanner.nextInt();
                         switch (choice) {
                             case 1:
                                 System.out.println("1. Filter medias in cart");
+                                System.out.println("Do you want to filter by title or id? (T/I)");
+                                String choice1 = scanner.nextLine();
+                                if (choice1.equals("T")){
+                                    cart.filterByTitle();
+                                }else if (choice1.equals("I")) {
+                                    cart.filterById();
+                                }else {
+                                    System.out.println("Invalid choice");
+                                    break;
+                                }
                                 break;
                             case 2:
                                 System.out.println("2. Sort medias in cart");
+                                System.out.println("Do you want to sort by title or cost? (T/C)");
+                                String choice2 = scanner.nextLine();
+                                if (choice2.equals("T")){
+                                    cart.filterByTitle();
+                                }else if (choice2.equals("C")) {
+                                    cart.sortByCost();
+                                }else {
+                                    System.out.println("Invalid choice");
+                                    break;
+                                }
                                 break;
                             case 3:
                                 System.out.println("3. Remove media from cart");
+                                System.out.println("Please enter the name of the media that you want to remove: ");
+                                String name5 = scanner.nextLine();
+                                if (cart.searchTitleToDo(name5) != -1) {
+                                    cart.removeMedia(dvdlist[cart.searchTitleToDo(name5)]);
+                                }else {
+                                    System.out.println("That media does not exist");
+                                    break;
+                                }
                                 break;
                             case 4:
                                 System.out.println("4. Play a media");
+                                System.out.println("Please enter the name of the media that you want to play: ");
+                                String name6 = scanner.nextLine();
+                                if (cart.searchTitleToDo(name6) != -1) {
+                                    dvdlist[cart.searchTitleToDo(name6)].play();
+                                }else {
+                                    System.out.println("That media does not exist");
+                                    break;
+                                }
                                 break;
                             case 5:
                                 System.out.println("5. Place order");
