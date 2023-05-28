@@ -86,7 +86,6 @@ public class Aims {
         cart.removeMedia(dvd2);
         System.out.println("Total Cost after removing Star Wars 24.95: " + cart.totalCost() +"\n");
 
-        System.out.println("More testings:");
         DigitalVideoDisc dvd4 = new DigitalVideoDisc("Avatar", "Science Fiction", "James Cameron", 192, 12.44f);
         DigitalVideoDisc dvd5 = new DigitalVideoDisc("Avatar: Way of the Water", "Science Fiction", "James Cameron", 27.98f);
         DigitalVideoDisc dvd6 = new DigitalVideoDisc("Top Gun: Maverick", "Action", 22.25f);
@@ -125,40 +124,69 @@ public class Aims {
             switch (choice) {
                 case 1:
                     System.out.println("1. View store");
+                    store.displayStore();
                     do {
                         storeMenu();
                         choice = scanner.nextInt();
                         switch (choice) {
                             case 1:
                                 System.out.println("1. See a media’s details");
-                                do {
-                                    store.displayStore();
-                                    mediaDetailsMenu();
-                                    choice = scanner.nextInt();
-                                    switch (choice) {
-                                        case 1:
-                                            System.out.println("1. Add to cart");
-                                            break;
-                                        case 2:
-                                            System.out.println("2. Play");
-                                            break;
-                                        case 0:
-                                            System.out.println("0. Back");
-                                            break;
-                                        default:
-                                            System.out.println("Invalid choice");
-                                            break;
-                                    }
-                                } while (choice != 0);
-                                break;
+                                System.out.println("Please enter the name of the media that you want to view: ");
+                                Scanner scanner1 = new Scanner(System.in);
+                                String name1 = scanner1.nextLine();
+                                if (store.searchByTitleToDo(name1) != -1){
+                                    int index = store.searchByTitleToDo(name1);
+                                    System.out.println("Found :");
+                                    store.displayItem(index);
+                                    do {
+                                        mediaDetailsMenu();
+                                        choice = scanner.nextInt();
+                                        switch (choice) {
+                                            case 1:
+                                                System.out.println("1. Add to cart");
+                                                cart.addMedia(dvdlist[index]);
+                                                break;
+                                            case 2:
+                                                System.out.println("2. Play");
+                                                dvdlist[index].play();
+                                                break;
+                                            case 0:
+                                                System.out.println("0. Back");
+                                                break;
+                                            default:
+                                                System.out.println("Invalid choice");
+                                                break;
+                                        }
+                                    } while (choice != 0);
+                                }else
+                                    break;
                             case 2:
                                 System.out.println("2. Add a media to cart");
-                                break;
+                                System.out.println("Please enter the name of the media that you want to add: ");
+                                Scanner scanner2 = new Scanner(System.in);
+                                String name2 = scanner2.nextLine();
+                                cart.addMedia(dvdlist[store.searchByTitleToDo(name2)]);
+//                                if (cart.searchTitleToDo(name2) != -1){
+//                                    cart.searchByTitle(name2);
+//                                    System.out.println("That media exists, do you want to add it? (Y/N)");
+//
+//                                }else
+//                                    break;
                             case 3:
                                 System.out.println("3. Play a media");
+                                System.out.println("Please enter the name of the media that you want to play: ");
+                                Scanner scanner3 = new Scanner(System.in);
+                                String name3 = scanner3.nextLine();
+                                if (store.searchByTitleToDo(name3) != -1){
+                                    dvdlist[store.searchByTitleToDo(name3)].play();
+                                }else{
+                                    System.out.println("That media does not exist");
+                                    break;
+                                }
                                 break;
                             case 4:
                                 System.out.println("4. See current cart");
+                                cart.printCart();
                                 break;
                             case 0:
                                 System.out.println("0. Back");
@@ -168,7 +196,6 @@ public class Aims {
                                 break;
                         }
                     }while (choice != 0);
-
                     break;
                 case 2:
                     System.out.println("2. Update store");

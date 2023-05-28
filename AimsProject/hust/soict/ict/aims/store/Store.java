@@ -42,5 +42,38 @@ public class Store {
         }
         System.out.println("***************************************************");
     }
+    public void displayItem(int i) {
+        System.out.println(i+1 + ". DVD - " + itemsOrdered.get(i).getTitle() + " - " + itemsOrdered.get(i).getCategory() + ": " + itemsOrdered.get(i).getCost() + "$");
+    }
+    public int searchByTitleToDo(String title) {
+        int index = -1;
+//        boolean found = false;
+        for (int i = 0; i < storeSize; i++) {
+            DigitalVideoDisc disc = (DigitalVideoDisc) itemsOrdered.get(i);
+            if (disc.getTitle().equals(title)) {
+                System.out.printf("Found DVD: %d. %s - %s - %s - %d min: %.2f $\n",
+                        disc.getId(), disc.getTitle(), disc.getCategory(),
+                        disc.getDirector(), disc.getLength(), disc.getCost());
+                index = i;
+//                found = true;
+            }
+        }
+        return index;
+    }
+    public void searchByTitle(String title) {
+        boolean found = false;
+        for (int i = 0; i < storeSize; i++) {
+            DigitalVideoDisc disc = (DigitalVideoDisc) itemsOrdered.get(i);
+            if (disc.getTitle().equals(title)) {
+                System.out.printf("Found DVD: %d. %s - %s - %s - %d min: %.2f $\n",
+                        disc.getId(), disc.getTitle(), disc.getCategory(),
+                        disc.getDirector(), disc.getLength(), disc.getCost());
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("No DVD was found with the specified title.");
+        }
+    }
 
 }

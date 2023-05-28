@@ -82,5 +82,17 @@ public class Cart {
             System.out.println("No DVD was found with the specified title.");
         }
     }
-
+    public int searchTitleToDo(String title) {
+        int index = -1;
+        for (int i = 0; i < size; i++) {
+            DigitalVideoDisc disc = (DigitalVideoDisc) itemsOrdered.get(i);
+            if (disc.getTitle().equals(title)) {
+                System.out.printf("Found DVD: %d. %s - %s - %s - %d min: %.2f $\n",
+                        disc.getId(), disc.getTitle(), disc.getCategory(),
+                        disc.getDirector(), disc.getLength(), disc.getCost());
+                index = i;
+            }
+        }
+        return index;
+    }
 }
